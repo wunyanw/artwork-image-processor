@@ -1,1 +1,1 @@
-web: gunicorn artwork-image-processor.wsgi --log-file -
+web: gunicorn artwork_image_processor.wsgi --log-file -
