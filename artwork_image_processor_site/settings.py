@@ -132,5 +132,6 @@ STATICFILES_DIRS = [
     #'/var/www/static/',
 ]
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
+django_heroku.settings(locals(), logging=not DEBUG, databases=not DEBUG)
 
