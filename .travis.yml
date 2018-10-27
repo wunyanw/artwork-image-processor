@@ -9,9 +9,12 @@ python:
   
 #command to install
 install:
-    - pip install -r requirements.txt
-    #- pip install Django==2.1.2
-    -pip install django-heroku
+    - pip install -r requirements-build.txt
+
+#before_script:
+#    - python manage.py makemigrations
+#    - python manage.py collectstatic
+
 #command to run tests
 script:
     - python manage.py test
