@@ -11,7 +11,13 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import django_heroku
+try:
+    # Configure Django App for Heroku.
+    ## Activate Django-Heroku.
+    import django_heroku
+    django_heroku.settings(locals())
+except ImportError:
+    found = False
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -131,8 +137,4 @@ STATICFILES_DIRS = [
     os.path.join(MEDIA_ROOT, "static"),
     #'/var/www/static/',
 ]
-
-# Activate Django-Heroku.
-#django_heroku.settings(locals())
-django_heroku.settings(locals(), logging=not DEBUG, databases=not DEBUG)
 
