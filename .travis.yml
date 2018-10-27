@@ -10,10 +10,11 @@ python:
 #command to install
 install:
     - pip install -r requirements.txt
-    
+
+before_script: python manage.py collectstatic
+
 #command to run tests
 script:
-    -python manage.py collectstatic
     - python manage.py test
     
 notifications:
