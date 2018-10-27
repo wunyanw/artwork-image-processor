@@ -135,4 +135,3 @@ STATICFILES_DIRS = [
 # Activate Django-Heroku.
 #django_heroku.settings(locals())
 django_heroku.settings(locals(), logging=not DEBUG, databases=not DEBUG)
-
