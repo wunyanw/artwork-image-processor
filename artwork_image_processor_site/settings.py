@@ -154,6 +154,7 @@ STATICFILES_DIRS = [
 ]
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 #django_heroku.settings(locals())
+print("NEW BASE_DIR? " + os.path.dirname(os.path.dirname(__file__)))
 print("STATICFILES_DIRS" + os.path.join(MEDIA_ROOT, "static")) #/home/travis/build/wunyanw/artwork-image-processor/media/static
 print("TEST_ROOT" + os.path.join(BASE_DIR, "static")) #/home/travis/build/wunyanw/artwork-image-processor/static
 print("STATIC_ROOT" + os.path.join(PROJECT_ROOT, 'staticfiles')) #/home/travis/build/wunyanw/artwork-image-processor/artwork_image_processor_site/staticfiles
