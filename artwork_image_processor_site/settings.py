@@ -20,7 +20,8 @@ except ImportError:
     found = False
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(__file__)))
 PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
@@ -154,7 +155,8 @@ STATICFILES_DIRS = [
 ]
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 #django_heroku.settings(locals())
-print("NEW BASE_DIR? " + os.path.dirname(os.path.dirname(__file__)))
-print("STATICFILES_DIRS" + os.path.join(MEDIA_ROOT, "static")) #/home/travis/build/wunyanw/artwork-image-processor/media/static
-print("TEST_ROOT" + os.path.join(BASE_DIR, "static")) #/home/travis/build/wunyanw/artwork-image-processor/static
-print("STATIC_ROOT" + os.path.join(PROJECT_ROOT, 'staticfiles')) #/home/travis/build/wunyanw/artwork-image-processor/artwork_image_processor_site/staticfiles
+print("OLD BASE_DIR " + os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) ##/home/travis/build/wunyanw/artwork-image-processor/
+print("NEW BASE_DIR? " + os.path.dirname(os.path.dirname(__file__))) #/home/travis/build/wunyanw/artwork-image-processor
+print("STATICFILES_DIRS " + os.path.join(MEDIA_ROOT, "static")) #/home/travis/build/wunyanw/artwork-image-processor/media/static
+print("BASE_DIR with static " + os.path.join(BASE_DIR, "static")) #/home/travis/build/wunyanw/artwork-image-processor/static
+print("PROJECT_ROOT with staticfiles " + os.path.join(PROJECT_ROOT, 'staticfiles')) #/home/travis/build/wunyanw/artwork-image-processor/artwork_image_processor_site/staticfiles
