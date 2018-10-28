@@ -11,10 +11,8 @@ python:
 install:
     - pip install -r requirements-build.txt
 
-#before_script:
-#    - python manage.py makemigrations
-#    - python manage.py collectstatic
-
+before_script:
+    - python manage.py migrate
 #command to run tests
 script:
     - python manage.py test
