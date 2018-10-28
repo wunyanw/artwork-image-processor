@@ -32,7 +32,7 @@ SECRET_KEY = '@&n+hghx4ktg!%fr(qd-ve@!n03s3d*_x0k=d47z4@yag%eops'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['artwork-image-processor.herokuapp.com']
+ALLOWED_HOSTS = ['artwork-image-processor.herokuapp.com','*']
 
 
 # Application definition
@@ -128,15 +128,13 @@ USE_TZ = True
 
 #STATIC_ROOT = os.path.join(MEDIA_ROOT, 'static')
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-# 2116 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
     os.path.join(MEDIA_ROOT, "static"),
-    os.path.join(PROJECT_ROOT, 'static'),
     #'/var/www/static/',
 ]
 
