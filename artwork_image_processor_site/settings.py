@@ -135,6 +135,7 @@ MEDIA_URL = '/media/'
 
 STATICFILES_DIRS = [
     os.path.join(MEDIA_ROOT, "static"),
+    os.path.join(PROJECT_ROOT, 'staticfiles'),
     #'/var/www/static/',
 ]
 
