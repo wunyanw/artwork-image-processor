@@ -121,22 +121,35 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+#--------------------------------------
 # Static files (CSS, JavaScript, Images)
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 #STATIC_ROOT = os.path.join(MEDIA_ROOT, 'static')
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+#STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+#STATIC_URL = '/static/'
+#MEDIA_URL = '/media/'
+
+#STATICFILES_DIRS = [
+#    os.path.join(MEDIA_ROOT, "static"),
+    #'/var/www/static/',
+#]
+#--------------------------------------
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
-STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(MEDIA_ROOT, "static"),
+    os.path.join(PROJECT_ROOT, "static"),
     #'/var/www/static/',
 ]
-
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#django_heroku.settings(locals())
