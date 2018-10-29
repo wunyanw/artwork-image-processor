@@ -11,12 +11,12 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-try:
+#try:
     # Configure Django App for Heroku.
     ## Activate Django-Heroku.
-    import django_heroku
-except ImportError:
-    found = False
+import django_heroku
+#except ImportError:
+#    found = False
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -154,12 +154,12 @@ STATICFILES_DIRS = [
     #'/var/www/static/',
 ]
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-#django_heroku.settings(locals())
+
+django_heroku.settings(locals())
+
 print("OLD BASE_DIR " + os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) ##/home/travis/build/wunyanw/artwork-image-processor/
 print("NEW BASE_DIR? " + os.path.dirname(os.path.dirname(__file__))) #/home/travis/build/wunyanw/artwork-image-processor
 print("THIRD NEW BASE_DIR " +os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 print("STATICFILES_DIRS " + os.path.join(MEDIA_ROOT, "static")) #/home/travis/build/wunyanw/artwork-image-processor/media/static
 print("BASE_DIR with static " + os.path.join(BASE_DIR, "static")) #/home/travis/build/wunyanw/artwork-image-processor/static
 print("PROJECT_ROOT with staticfiles " + os.path.join(PROJECT_ROOT, 'staticfiles')) #/home/travis/build/wunyanw/artwork-image-processor/artwork_image_processor_site/staticfiles
-
-django_heroku.settings(locals())
