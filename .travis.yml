@@ -9,10 +9,13 @@ python:
   
 #command to install
 install:
+#    - pip install -r requirements.txt
     - pip install -r requirements-build.txt
 
 before_script:
-    - python manage.py migrate
+#    - python manage.py migrate
+    - python manage.py collectstatic
+    - yes
 #command to run tests
 script:
     - python manage.py test

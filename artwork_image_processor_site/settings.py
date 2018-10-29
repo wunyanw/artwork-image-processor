@@ -19,9 +19,12 @@ try:
 except ImportError:
     found = False
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+#BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -30,9 +33,9 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '@&n+hghx4ktg!%fr(qd-ve@!n03s3d*_x0k=d47z4@yag%eops'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['artwork-image-processor.herokuapp.com']
+ALLOWED_HOSTS = ['artwork-image-processor.herokuapp.com','*']
 
 
 # Application definition
@@ -55,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'artwork_image_processor_site.urls'
@@ -80,12 +84,11 @@ WSGI_APPLICATION = 'artwork_image_processor_site.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+        default='sqlite:////{0}'.format(os.path.join(BASE_DIR,'db.sqlite3'))
+    )
 }
 
 
@@ -121,21 +124,43 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+#--------------------------------------
 # Static files (CSS, JavaScript, Images)
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 #STATIC_ROOT = os.path.join(MEDIA_ROOT, 'static')
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+#STATIC_URL = '/static/'
+#MEDIA_URL = '/media/'
+
+#STATICFILES_DIRS = [
+#    os.path.join(MEDIA_ROOT, "static"),
+    #'/var/www/static/',
+#]
+#--------------------------------------
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(MEDIA_ROOT, "static"),
-    os.path.join(PROJECT_ROOT, 'static'),
     #'/var/www/static/',
 ]
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
+#django_heroku.settings(locals())
+
+print("OLD BASE_DIR " + os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) ##/home/travis/build/wunyanw/artwork-image-processor/
+print("NEW BASE_DIR? " + os.path.dirname(os.path.dirname(__file__))) #/home/travis/build/wunyanw/artwork-image-processor
+print("THIRD NEW BASE_DIR " +os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+print("STATICFILES_DIRS " + os.path.join(MEDIA_ROOT, "static")) #/home/travis/build/wunyanw/artwork-image-processor/media/static
+print("BASE_DIR with static " + os.path.join(BASE_DIR, "static")) #/home/travis/build/wunyanw/artwork-image-processor/static
+print("PROJECT_ROOT with staticfiles " + os.path.join(PROJECT_ROOT, 'staticfiles')) #/home/travis/build/wunyanw/artwork-image-processor/artwork_image_processor_site/staticfiles
