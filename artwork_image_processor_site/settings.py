@@ -15,7 +15,6 @@ try:
     # Configure Django App for Heroku.
     ## Activate Django-Heroku.
     import django_heroku
-    django_heroku.settings(locals())
 except ImportError:
     found = False
 
@@ -162,3 +161,5 @@ print("THIRD NEW BASE_DIR " +os.path.dirname(os.path.dirname(os.path.dirname(os.
 print("STATICFILES_DIRS " + os.path.join(MEDIA_ROOT, "static")) #/home/travis/build/wunyanw/artwork-image-processor/media/static
 print("BASE_DIR with static " + os.path.join(BASE_DIR, "static")) #/home/travis/build/wunyanw/artwork-image-processor/static
 print("PROJECT_ROOT with staticfiles " + os.path.join(PROJECT_ROOT, 'staticfiles')) #/home/travis/build/wunyanw/artwork-image-processor/artwork_image_processor_site/staticfiles
+
+django_heroku.settings(locals())
