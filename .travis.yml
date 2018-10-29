@@ -15,6 +15,10 @@ before_script:
     - python manage.py migrate --run-syncdb
     - python manage.py collectstatic --noinput
 
+before_script:
+#    - python manage.py migrate
+    - python manage.py collectstatic
+    - yes
 #command to run tests
 script:
     - python manage.py test
