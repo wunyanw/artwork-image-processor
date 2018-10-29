@@ -11,9 +11,13 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import django_heroku
-# Configure Django App for Heroku.
-## Activate Django-Heroku.
+try:
+    # Configure Django App for Heroku.
+    ## Activate Django-Heroku.
+    import django_heroku
+    django_heroku.settings(locals())
+except ImportError:
+    found = False
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -152,7 +156,7 @@ STATICFILES_DIRS = [
 ]
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 
 print("OLD BASE_DIR " + os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) ##/home/travis/build/wunyanw/artwork-image-processor/
 print("NEW BASE_DIR? " + os.path.dirname(os.path.dirname(__file__))) #/home/travis/build/wunyanw/artwork-image-processor
